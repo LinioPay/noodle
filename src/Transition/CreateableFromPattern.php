@@ -9,24 +9,16 @@ interface CreateableFromPattern
      * the provided string representing a transition to extract the input,
      * current state, and next state. If no pattern has previously been set,
      * a sensible default will be used.
-     *
-     * @param string $transition
-     *
-     * @return Transition
      */
     public static function new(string $transition) : Transition;
 
     /**
      * Returns the configured pattern, or a default, if none is set.
-     *
-     * @return string
      */
     public static function getPattern() : string;
 
     /**
-     * Configures the pattern to use
-     *
-     * @param string $pattern
+     * Configures the pattern to use.
      *
      * @return void
      */

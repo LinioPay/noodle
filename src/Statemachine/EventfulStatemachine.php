@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Statemachine;
 
@@ -19,11 +19,6 @@ interface EventfulStatemachine
      * state should take place, such as persisting it to a database or doing any kind of
      * logging.
      *
-     * @param Input $input
-     * @param State $currentState
-     * @param Listener $listener
-     * @param int $priority
-     *
      * @return void
      */
     public function after(Input $input, State $currentState, Listener $listener, int $priority = Emitter::P_NORMAL);
@@ -32,11 +27,6 @@ interface EventfulStatemachine
      * Adds a listener that listens for the "before applying input to state" event. This is
      * where any preconditions for state transition would be evaluated and would be the place
      * to stop an otherwise valid transition from taking place.
-     *
-     * @param Input $input
-     * @param State $currentState
-     * @param Listener $listener
-     * @param int $priority
      *
      * @return void
      */
@@ -47,11 +37,6 @@ interface EventfulStatemachine
      * this is when the object's state would be updated and any other related logic would
      * be executed.
      *
-     * @param Input $input
-     * @param State $currentState
-     * @param Listener $listener
-     * @param int $priority
-     *
      * @return void
      */
     public function on(Input $input, State $currentState, Listener $listener, int $priority = Emitter::P_NORMAL);
@@ -60,8 +45,6 @@ interface EventfulStatemachine
      * Evaluates whether the an input is valid for an object in its current state, then
      * emits the appropriate events.
      *
-     * @param Input $input
-     * @param Stateful $object
      * @param Context $context
      *
      * @return void

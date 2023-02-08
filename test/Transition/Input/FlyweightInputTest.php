@@ -1,10 +1,12 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Transition\Input;
 
-class FlyweightInputTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class FlyweightInputTest extends TestCase
 {
     public function testCreatesNamedInputs()
     {
@@ -32,7 +34,7 @@ class FlyweightInputTest extends \PHPUnit_Framework_TestCase
      */
     public function testWildcardAnyInputIsFortyCharHexString()
     {
-        $this->assertRegExp(
+        $this->assertMatchesRegularExpression(
             '/^[0-9a-f]{40}$/',
             FlyweightInput::any()->getName(),
             'Expected 40 lowercase hexadecimal characters'

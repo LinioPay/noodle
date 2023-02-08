@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Transition\Exception;
 
@@ -9,10 +9,7 @@ use Noodle\Statemachine\Exception;
 class TransitionPatternMismatch extends Exception
 {
     /**
-     * Prepares exception message that includes the mismatched pattern and transition string
-     *
-     * @param string $transition
-     * @param string $pattern
+     * Prepares exception message that includes the mismatched pattern and transition string.
      */
     public function __construct(string $transition, string $pattern)
     {

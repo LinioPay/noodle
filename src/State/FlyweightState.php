@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\State;
 
@@ -15,14 +15,14 @@ namespace Noodle\State;
 final class FlyweightState implements CreatesWildcard, CreatesWithName, State
 {
     /**
-     * The name of the state
+     * The name of the state.
      *
      * @var string
      */
     private $name;
 
     /**
-     * Instances of states created by the FlyweightState factory method
+     * Instances of states created by the FlyweightState factory method.
      *
      * @var State[]
      */
@@ -36,9 +36,7 @@ final class FlyweightState implements CreatesWildcard, CreatesWithName, State
     private static $wildcard;
 
     /**
-     * Constructor
-     *
-     * @param string $name
+     * Constructor.
      */
     private function __construct(string $name)
     {
@@ -56,10 +54,6 @@ final class FlyweightState implements CreatesWildcard, CreatesWithName, State
     /**
      * Creates and returns a state with the given name, or, if such a state
      * has already been created, returns it from the instance cache.
-     *
-     * @param string $name
-     *
-     * @return State
      */
     public static function named(string $name) : State
     {
@@ -74,8 +68,6 @@ final class FlyweightState implements CreatesWildcard, CreatesWithName, State
      * Creates and returns a state with a long, random, name in hex to be
      * designated the "any" / "wildcard" state, or, if such a state has
      * already been created, returns it.
-     *
-     * @return State
      */
     public static function any() : State
     {

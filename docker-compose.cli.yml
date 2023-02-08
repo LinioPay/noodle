@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  composer:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    init: true
+    volumes:
+      - .:/application:delegated
+      - composer-cache:/root/.composer/cache:cached
+    environment:
+      LINIO_ENV: local
+      XDEBUG_ENV: enabled # now xdebug is enabled only in phpunit from the script in the composer
+      XDEBUG_MODE: coverage
+      XDEBUG_CONFIG: client_host=host.docker.internal
+    entrypoint:
+      - composer
+    # Apple M1 processor
+    platform: linux/arm64/v8
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    init: true
+    volumes:
+      - .:/application:delegated
+      - composer-cache:/root/.composer/cache:cached
+    environment:
+      LINIO_ENV: local
+      XDEBUG_ENV: enabled # now xdebug is enabled only in phpunit from the script in the composer
+      XDEBUG_MODE: coverage
+    # Apple M1 processor
+    platform: linux/arm64/v8
+
+volumes:
+  composer-cache: ~

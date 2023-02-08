@@ -1,13 +1,14 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Stateful;
 
 use Noodle\State\Exception\StateNotSet;
 use Noodle\State\FlyweightState;
+use PHPUnit\Framework\TestCase;
 
-class StateMaintainerTest extends \PHPUnit_Framework_TestCase
+class StateMaintainerTest extends TestCase
 {
     use StateMaintainer;
 

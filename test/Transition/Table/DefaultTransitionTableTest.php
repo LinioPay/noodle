@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Transition\Table;
 
@@ -9,8 +9,9 @@ use Noodle\TestAsset\ChessMatchTransitionTable;
 use Noodle\Transition\DefaultTransition;
 use Noodle\Transition\Input\FlyweightInput;
 use Noodle\Transition\Table\Exception\InvalidInputForState;
+use PHPUnit\Framework\TestCase;
 
-class DefaultTransitionTableTest extends \PHPUnit_Framework_TestCase
+class DefaultTransitionTableTest extends TestCase
 {
     public function testThrowsExceptionWhenProvidingInvalidInputToState()
     {
@@ -44,10 +45,6 @@ class DefaultTransitionTableTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider movesProvider
-     *
-     * @param string $currentStateName
-     * @param array $inputNames
-     * @param string $expectedStateName
      */
     public function testResolvesStateTransitionsProperly(
         string $currentStateName,

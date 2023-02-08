@@ -1,23 +1,24 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Statemachine;
 
-abstract class Exception extends \RuntimeException
+use RuntimeException;
+
+abstract class Exception extends RuntimeException
 {
     /**
-     * The default exception message that will be used if none is provided
+     * The default exception message that will be used if none is provided.
      *
      * @var
      */
-    const MESSAGE = '';
+    public const MESSAGE = '';
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $message
-     * @param int $code
      * @param \Exception $previous (Optional)
      */
     public function __construct($message = '', int $code = 0, \Exception $previous = null)

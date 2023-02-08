@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Listener;
 
@@ -14,13 +14,7 @@ use Noodle\Transition\Input\Input;
 class ReportsTransitionFailures extends InvokableListener
 {
     /**
-     * Throws an exception with details on the failed transition
-     *
-     * @param Event $event
-     * @param Stateful $object
-     * @param Context $context
-     * @param Input $input
-     * @param State $nextState
+     * Throws an exception with details on the failed transition.
      */
     final public function __invoke(Event $event, Stateful $object, Context $context, Input $input, State $nextState)
     {

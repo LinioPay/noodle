@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Transition\Table\Exception;
 
@@ -21,10 +21,7 @@ class InvalidInputForState extends Exception
     private $state;
 
     /**
-     * Prepares exception message that includes the invalid input and state
-     *
-     * @param Input $input
-     * @param State $state
+     * Prepares exception message that includes the invalid input and state.
      */
     public function __construct(Input $input, State $state)
     {
@@ -36,8 +33,6 @@ class InvalidInputForState extends Exception
 
     /**
      * Returns the input that was attempted.
-     *
-     * @return Input
      */
     public function getInput() : Input
     {
@@ -46,8 +41,6 @@ class InvalidInputForState extends Exception
 
     /**
      * Returns what the object's current state was.
-     *
-     * @return State
      */
     public function getState() : State
     {

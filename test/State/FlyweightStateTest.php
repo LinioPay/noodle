@@ -1,10 +1,12 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\State;
 
-class FlyweightStateTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class FlyweightStateTest extends TestCase
 {
     public function testCreatesNamedStates()
     {
@@ -32,7 +34,7 @@ class FlyweightStateTest extends \PHPUnit_Framework_TestCase
      */
     public function testWildcardAnyInputIsFortyCharHexString()
     {
-        $this->assertRegExp(
+        $this->assertMatchesRegularExpression(
             '/^[0-9a-f]{40}$/',
             FlyweightState::any()->getName(),
             'Expected 40 lowercase hexadecimal characters'

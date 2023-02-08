@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Transition\Input;
 
@@ -15,14 +15,14 @@ namespace Noodle\Transition\Input;
 final class FlyweightInput implements CreatesWildcard, CreatesWithName, Input
 {
     /**
-     * The name of the input
+     * The name of the input.
      *
      * @var string
      */
     private $name;
 
     /**
-     * Instances of inputs created by the FlyweightInput factory method
+     * Instances of inputs created by the FlyweightInput factory method.
      *
      * @var Input[]
      */
@@ -36,9 +36,7 @@ final class FlyweightInput implements CreatesWildcard, CreatesWithName, Input
     private static $wildcard;
 
     /**
-     * Constructor
-     *
-     * @param string $name
+     * Constructor.
      */
     private function __construct(string $name)
     {
@@ -56,10 +54,6 @@ final class FlyweightInput implements CreatesWildcard, CreatesWithName, Input
     /**
      * Creates and returns an input with the given name, or, if such an input
      * has already been created, returns it from the instance cache.
-     *
-     * @param string $name
-     *
-     * @return Input
      */
     public static function named(string $name) : Input
     {
@@ -74,8 +68,6 @@ final class FlyweightInput implements CreatesWildcard, CreatesWithName, Input
      * Creates and returns an input with a long, random, name in hex to be
      * designated the "any" / "wildcard" state, or, if such an input has
      * already been created, returns it.
-     *
-     * @return Input
      */
     public static function any() : Input
     {

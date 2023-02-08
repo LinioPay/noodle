@@ -1,59 +1,55 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Statemachine\Exception;
 
 use ArrayObject as Context;
 use Noodle\State\State;
-use Noodle\Statemachine\Exception;
 use Noodle\Stateful\Stateful;
+use Noodle\Statemachine\Exception;
 use Noodle\Transition\Input\Input;
 
 class StateTransitionFailed extends Exception
 {
     /**
-     * The default exception message that will be used if none is provided
+     * The default exception message that will be used if none is provided.
      *
      * @var string
      */
-    const MESSAGE = 'Error occurred while executing a state transition';
+    public const MESSAGE = 'Error occurred while executing a state transition';
 
     /**
-     * The context object shared across state transitions
+     * The context object shared across state transitions.
      *
      * @var Context
      */
     private $context;
 
     /**
-     * The stateful object
+     * The stateful object.
      *
      * @var Stateful
      */
     private $object;
 
     /**
-     * The input that triggered the state transition
+     * The input that triggered the state transition.
      *
      * @var Input
      */
     private $input;
 
     /**
-     * The state that would have been achived, had the transition succeeded
+     * The state that would have been achived, had the transition succeeded.
      *
      * @var State
      */
     private $nextState;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param Input $input
-     * @param Stateful $object
-     * @param Context $context
-     * @param State $nextState
      * @param \Exception $previous (Optional)
      */
     public function __construct(
@@ -79,9 +75,7 @@ class StateTransitionFailed extends Exception
     }
 
     /**
-     * Returns the shared context object
-     *
-     * @return Context
+     * Returns the shared context object.
      */
     public function getContext() : Context
     {
@@ -89,9 +83,7 @@ class StateTransitionFailed extends Exception
     }
 
     /**
-     * Returns the input that triggered the state transition
-     *
-     * @return Input
+     * Returns the input that triggered the state transition.
      */
     public function getInput() : Input
     {
@@ -104,9 +96,7 @@ class StateTransitionFailed extends Exception
     }
 
     /**
-     * Returns the stateful object
-     *
-     * @return Stateful
+     * Returns the stateful object.
      */
     public function getObject() : Stateful
     {

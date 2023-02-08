@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Transition\Table;
 
@@ -17,7 +17,7 @@ final class DefaultTransitionTable implements TransitionTable
     private $transitions = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param \Noodle\Transition\Transition[] ...$transitions
      */
@@ -48,11 +48,6 @@ final class DefaultTransitionTable implements TransitionTable
     /**
      * Returns the key to use to store the action involving application of an
      * input to a given state internally.
-     *
-     * @param State $currentState
-     * @param Input $input
-     *
-     * @return string
      */
     private function getActionKey(State $currentState, Input $input) : string
     {

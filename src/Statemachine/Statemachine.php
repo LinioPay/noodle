@@ -12,7 +12,6 @@ use Noodle\Listener\ReportsTransitionFailures;
 use Noodle\State\FlyweightState;
 use Noodle\State\State;
 use Noodle\Stateful\Stateful;
-use Noodle\Statemachine\Exception as NoodleException;
 use Noodle\Statemachine\Exception\StateTransitionFailed;
 use Noodle\Transition\Input\FlyweightInput;
 use Noodle\Transition\Input\Input;
@@ -21,23 +20,22 @@ use Noodle\Transition\Table\TransitionTable;
 final class Statemachine implements EventfulStatemachine
 {
     /**
-     * The emitter used to emit events
+     * The emitter used to emit events.
      *
      * @var Emitter
      */
     private $emitter;
 
     /**
-     * Transition table used to determine which states support which actions
+     * Transition table used to determine which states support which actions.
      *
      * @var TransitionTable
      */
     private $stateTransitionTable;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param TransitionTable $stateTransitionTable
      * @param Listener $failureHandler (Optional) Listener that handles transition failures
      * @param Listener $stateChanger (Optional) Listener that updates the object's state
      */
@@ -116,13 +114,7 @@ final class Statemachine implements EventfulStatemachine
     }
 
     /**
-     * Creates an event name based on an input, current state, and when that event should be emitted
-     *
-     * @param string $executedWhen
-     * @param Input $input
-     * @param State $currentState
-     *
-     * @return string
+     * Creates an event name based on an input, current state, and when that event should be emitted.
      */
     private function getEventName(string $executedWhen, Input $input, State $currentState) : string
     {
@@ -131,11 +123,6 @@ final class Statemachine implements EventfulStatemachine
 
     /**
      * Emits the events corresponding to applying the provided input on the provided object.
-     *
-     * @param Input $input
-     * @param Stateful $object
-     * @param Context $context
-     * @param State $nextState
      *
      * @return void
      *
@@ -158,12 +145,7 @@ final class Statemachine implements EventfulStatemachine
     }
 
     /**
-     * Returns events to be emitted whenever a state transition is attempted
-     *
-     * @param Input $input
-     * @param State $currentState
-     *
-     * @return Generator
+     * Returns events to be emitted whenever a state transition is attempted.
      */
     private function eventProvider(Input $input, State $currentState) : Generator
     {

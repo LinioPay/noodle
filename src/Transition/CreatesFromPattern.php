@@ -10,7 +10,7 @@ use Noodle\Transition\Input\FlyweightInput;
 trait CreatesFromPattern
 {
     /**
-     * The regex pattern to use for creating Transitions
+     * The regex pattern to use for creating Transitions.
      *
      * @var string
      */

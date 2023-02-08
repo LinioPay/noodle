@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Transition;
 
@@ -8,20 +8,21 @@ use Noodle\State\FlyweightState;
 use Noodle\Transition\Exception\InvalidPattern;
 use Noodle\Transition\Exception\TransitionPatternMismatch;
 use Noodle\Transition\Input\FlyweightInput;
+use PHPUnit\Framework\TestCase;
 
-class DefaultTransitionTest extends \PHPUnit_Framework_TestCase
+class DefaultTransitionTest extends TestCase
 {
     /**
      * @var string
      */
     private static $defaultPattern;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         self::$defaultPattern = DefaultTransition::getPattern();
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass() : void
     {
         DefaultTransition::usePattern(self::$defaultPattern);
     }

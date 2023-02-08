@@ -1,15 +1,17 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Statemachine\Exception;
 
 use ArrayObject as Context;
+use Exception;
 use Noodle\State\FlyweightState;
 use Noodle\TestAsset\StatefulObject;
 use Noodle\Transition\Input\FlyweightInput;
+use PHPUnit\Framework\TestCase;
 
-class StateTransitionFailedTest extends \PHPUnit_Framework_TestCase
+class StateTransitionFailedTest extends TestCase
 {
     public function testAdditionalExceptionPropertiesAreAccessibleViaGeters()
     {
@@ -19,7 +21,7 @@ class StateTransitionFailedTest extends \PHPUnit_Framework_TestCase
 
         $context = new Context();
         $nextState = FlyweightState::named('FOOBAR');
-        $previous = new \Exception();
+        $previous = new Exception();
 
         $exception = new StateTransitionFailed($input, $object, $context, $nextState, $previous);
 

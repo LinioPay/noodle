@@ -1,8 +1,7 @@
 # noodle
 
-Noodle is a [finite statemachine](https://en.wikipedia.org/wiki/Finite-state_machine) written in PHP 7
+Noodle is a [finite statemachine](https://en.wikipedia.org/wiki/Finite-state_machine) written in PHP 8
 
-[![Build Status](https://travis-ci.org/michaelmoussa/noodle.svg?branch=master)](https://travis-ci.org/michaelmoussa/noodle)
 [![Code Coverage](https://scrutinizer-ci.com/g/michaelmoussa/noodle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/michaelmoussa/noodle/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/michaelmoussa/noodle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/michaelmoussa/noodle/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/michaelmoussa/noodle/v/stable.png)](https://packagist.org/packages/michaelmoussa/noodle)

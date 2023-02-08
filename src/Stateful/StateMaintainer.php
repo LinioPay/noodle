@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Stateful;
 
@@ -10,7 +10,7 @@ use Noodle\State\State;
 trait StateMaintainer
 {
     /**
-     * The object's current state
+     * The object's current state.
      *
      * @var State
      */
@@ -36,7 +36,6 @@ trait StateMaintainer
 
     /**
      * {@inheritdoc}
-     *
      */
     public function getCurrentStateName() : string
     {

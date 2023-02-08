@@ -1,10 +1,12 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Noodle\Statemachine;
 
 use ArrayObject as Context;
+use Exception;
+use Generator;
 use League\Event\CallbackListener;
 use League\Event\Event;
 use League\Event\EventInterface;
@@ -18,10 +20,11 @@ use Noodle\TestAsset\StatefulObject;
 use Noodle\Transition\Input\FlyweightInput;
 use Noodle\Transition\Input\Input;
 use Noodle\Transition\Table\Exception\InvalidInputForState;
+use PHPUnit\Framework\TestCase;
 
-class StatemachineTest extends \PHPUnit_Framework_TestCase
+class StatemachineTest extends TestCase
 {
-    public function whenProvider() : \Generator
+    public function whenProvider() : Generator
     {
         foreach (['before', 'on', 'after'] as $when) {
             $eventNames = [];
@@ -49,7 +52,7 @@ class StatemachineTest extends \PHPUnit_Framework_TestCase
                 ];
             }
 
-            $eventNames[] =  sprintf(
+            $eventNames[] = sprintf(
                 '%s %s %s',
                 $when,
                 FlyweightInput::any()->getName(),
@@ -62,9 +65,6 @@ class StatemachineTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider whenProvider
-     *
-     * @param string $when
-     * @param array $expectedEventNames
      */
     public function testEventsAreEmittedDuringTransitions(string $when, array $expectedEventNames)
     {
@@ -152,13 +152,13 @@ class StatemachineTest extends \PHPUnit_Framework_TestCase
 
     public function testExceptionsInListenersPropagateOutToApplication()
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage('kaboom!');
 
         $object = new StatefulObject();
         $object->setCurrentState(FlyweightState::named('WHITES_TURN'));
 
-        $originalException = new \Exception('kaboom!');
+        $originalException = new Exception('kaboom!');
         $statemachine = new Statemachine(new ChessMatchTransitionTable());
         $statemachine->before(
             FlyweightInput::named('WHITE_MOVES'),
@@ -176,8 +176,7 @@ class StatemachineTest extends \PHPUnit_Framework_TestCase
         $object = new StatefulObject();
         $object->setCurrentState(FlyweightState::named('WHITES_TURN'));
 
-        $stateChanger = new class extends InvokableListener
-        {
+        $stateChanger = new class() extends InvokableListener {
             public function __invoke(
                 EventInterface $event,
                 Stateful $object,
@@ -194,10 +193,9 @@ class StatemachineTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(FlyweightState::named('it worked!'), $object->getCurrentState());
     }
 
-    private function addRecordingEvents(Statemachine $statemachine, string $when) : \ArrayObject
+    private function addRecordingEvents(Statemachine $statemachine, string $when) : Context
     {
-        $eventRecorder = new class extends \ArrayObject
-        {
+        $eventRecorder = new class() extends Context {
             public $context = null;
 
             public function __invoke(
